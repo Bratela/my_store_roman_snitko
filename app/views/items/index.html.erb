@@ -1,0 +1,33 @@
+<% @page_description = "List of all the items in our store" %>
+<% @page_keywords = "buy purchase items online store cheap" %>
+
+<h1><%= @page_title = "List of all items" %></h1>
+
+<% if @items.empty? %>
+  <b>No items in store</b>
+<% else %>
+<table class="items">
+  <tr>
+    <th>item id</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Добавлено</th>
+    <th></th>
+    <th>Рейтинг</th>
+  </tr>
+
+  <% @items.each do |i| %>
+
+    <tr data-item_id="<%= i.id %>">
+      <td><%= i.id %></td>
+      <td><%= image_tag i.image.thumb %> <%= link_to i.name, item_path(i) %></td>
+      <td><%= i.price %> руб.</td>
+      <td><%= i.created_at.to_s.sub("2012", "2013") %></td>
+      <td><span class="deleteAction">Удалить</span></td>
+      <td><%= i.votes_count %>, <%= link_to "+", upvote_item_path(i) %></td>
+    </tr>
+
+  <% end %>
+
+</table>
+<% end %>
