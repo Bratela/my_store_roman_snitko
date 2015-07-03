@@ -212,3 +212,6 @@ DEPENDENCIES
   sqlite3
   thin
   uglifier
+
+BUNDLED WITH
+   1.10.3
